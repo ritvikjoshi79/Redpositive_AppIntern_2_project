@@ -13,7 +13,7 @@ class Demohome extends StatelessWidget {
       drawer: Burger(),
       body: Container(
         child: Center(
-          child: Text("Welcome"),
+          child: Text("Welcome you are loged in"),
         ),
       ),
     );

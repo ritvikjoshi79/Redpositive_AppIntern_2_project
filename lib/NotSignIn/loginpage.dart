@@ -1,7 +1,12 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:redpositive_app_1/pages/demo_home.dart';
 import 'package:redpositive_app_1/pages/drawer.dart';
 import 'Sign_Up.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 
 
@@ -13,10 +18,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  
 
 
 
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
   final emailcon = TextEditingController();
   final pwdcon = TextEditingController();
   bool _isHidden = true;
@@ -29,13 +36,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-  Widget buildTextField(String hintText) {
+  Widget buildTextField(String hintText , object) {
     return TextFormField( validator:(value) {
       if(value.isEmpty){
         return "You cannot leave this text field empty";
       }
       return null;
     },
+    controller: object,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
         hintText: hintText,
@@ -106,17 +114,38 @@ class _LoginPageState extends State<LoginPage> {
                           textDirection: TextDirection.ltr,
                           textAlign: TextAlign.left,
                           style: TextStyle(fontSize: 20.0)),
-                      buildTextField("Enter email.."),
+                      buildTextField("Enter email..", emailcon),
                       Text('PASSWORD',
                           textAlign: TextAlign.left,
                           style: TextStyle(fontSize: 20.0)),
-                      buildTextField("Enter password.."),
+                      buildTextField("Enter password.." , pwdcon),
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onTap: (){
-                              _formkey.currentState.validate()? Text('Success'):Container();
+                            onTap: () async{
+                             AuthResult res;
+
+                              try{
+                                  res = await _auth.signInWithEmailAndPassword(email: emailcon.text, password: pwdcon.text) ;
+                              }
+                              catch(e){
+                                print(e.toString());
+                                
+
+                              }finally{
+                                if(res!= null){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Demohome())) ;
+                                }
+                              }
+                                 
+
+                                    // if (await FirebaseAuth.instance.currentUser() != null) {
+                                      
+                                    // }
+                                   
+                                 
+
                             },
                             child: Container(
                               height: 50,

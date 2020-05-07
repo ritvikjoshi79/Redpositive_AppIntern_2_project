@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:redpositive_app_1/NotSignIn/loginpage.dart';
@@ -136,8 +137,17 @@ class _SignInState extends State<SignIn> {
                             onTap: (){
                               
                               _formkey.currentState.validate()? FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailcontroller.text, password: passwordcontroller.text): Text('Please fill all necessary fields');
+
                               if(_formkey.currentState.validate()){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+                                Firestore.instance.collection(namecontroller.text).add(
+                                  {
+                                    'Name' : namecontroller.text + lastnameroller.text,
+                                    'Email' : emailcontroller.text
+                                  }
+                                );
+
+                               
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginPage()));
                               }
                             },
                             child: Container(
