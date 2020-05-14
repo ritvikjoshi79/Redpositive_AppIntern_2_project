@@ -8,7 +8,11 @@ import 'package:redpositive_app_1/pages/Home.dart';
 
 void main() => runApp(
   MaterialApp(
+    title: 'Flutter Demo',
     debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+        primaryColor: Colors.red[800],
+      ),
     home: Splash(),
     
     routes: <String, WidgetBuilder>{

@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:redpositive_app_1/pages/demo_home.dart';
+import 'package:redpositive_app_1/Views/startScreen.dart';
 import 'package:redpositive_app_1/pages/drawer.dart';
 import 'Sign_Up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -135,7 +135,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 
                               }finally{
                                 if(res!= null){
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Demohome())) ;
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => StartScreen())) ;
                                 }
                               }
                                  
