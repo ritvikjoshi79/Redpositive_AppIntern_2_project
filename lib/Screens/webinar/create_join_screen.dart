@@ -51,58 +51,60 @@ class _CreateJoinScreenState extends State<CreateJoinScreen> {
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
-            Text(
-              status ? "Create a Webinar" : "Join a Webinar",
-              textScaleFactor: 2,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "Spartan",
-                  fontWeight: FontWeight.bold),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(.3),
-                        offset: Offset(0.0, 8.0),
-                        blurRadius: 8.0)
-                  ]),
-              child: Column(
-                children: <Widget>[
-                  status
-                      ? inputField("WEBINAR NAME", "Enter webinar name..")
-                      : Container(),
-                  inputField("WEBINAR ID", "Enter webinar ID.."),
-                  inputField("CODE", "Enter webinar code.."),
-                  status
-                      ? inputButton("Create Webinar", Colors.green)
-                      : inputButton("Join Webinar", Colors.orange),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
-            ),
-            FlatButton(
-              onPressed: () {
-                setState(() {
-                  status = !status;
-                });
-              },
-              child: Text(
-                status ? "Already created ? Join." : "Don't have one ? Create.",
-                textScaleFactor: 0.9,
-                style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+              Text(
+                status ? "Create a Webinar" : "Join a Webinar",
+                textScaleFactor: 2,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Spartan",
+                    fontWeight: FontWeight.bold),
               ),
-            )
-          ],
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(.3),
+                          offset: Offset(0.0, 8.0),
+                          blurRadius: 8.0)
+                    ]),
+                child: Column(
+                  children: <Widget>[
+                    status
+                        ? inputField("WEBINAR NAME", "Enter webinar name..")
+                        : Container(),
+                    inputField("WEBINAR ID", "Enter webinar ID.."),
+                    inputField("CODE", "Enter webinar code.."),
+                    status
+                        ? inputButton("Create Webinar", Colors.green)
+                        : inputButton("Join Webinar", Colors.orange),
+                  ],
+                ),
+              ),
+              FlatButton(
+                onPressed: () {
+                  setState(() {
+                    status = !status;
+                  });
+                },
+                child: Text(
+                  status ? "Already created ? Join." : "Don't have one ? Create.",
+                  textScaleFactor: 0.9,
+                  style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
