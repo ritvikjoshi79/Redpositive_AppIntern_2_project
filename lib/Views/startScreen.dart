@@ -1,6 +1,6 @@
-import 'package:appintern2/Screens/classroom.dart';
-import 'package:appintern2/Screens/meeting.dart';
-import 'package:appintern2/Screens/webinar/create_join_screen.dart';
+import 'package:redpositive_app_1/Screens/classroom.dart';
+import 'package:redpositive_app_1/Screens/meeting.dart';
+import 'package:redpositive_app_1/Screens/webinar/create_join_screen.dart';
 import 'package:flutter/material.dart';
 import '../Service/service.dart';
 
@@ -16,6 +16,7 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "RedPositive",
           textScaleFactor: 0.9,
