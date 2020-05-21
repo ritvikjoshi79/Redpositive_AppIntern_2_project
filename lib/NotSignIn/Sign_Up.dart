@@ -41,18 +41,18 @@ class _SignInState extends State<SignIn> {
           fontSize: 16.0,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(5.0),
         ),
       ),);
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor:  Color(0xff900C0C),
       appBar: AppBar(
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.white70), // change the drawer burger color,
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.white,
       ),
       drawer: Burger(),
 
@@ -65,18 +65,19 @@ class _SignInState extends State<SignIn> {
 
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                 child: Text("Create an account to proceed..",
-
+                    textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 20.0 ,
-                        fontWeight: FontWeight.w500 , letterSpacing: 1)),
+                        fontWeight: FontWeight.w500 , letterSpacing: 1,color: Colors.white)),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     color: Colors.white,
                     boxShadow: [BoxShadow(
                       color:  Colors.black,
@@ -132,7 +133,7 @@ class _SignInState extends State<SignIn> {
                       passwordcontroller),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(3.0),
                           child: GestureDetector(
                             onTap: (){
                               
@@ -152,15 +153,16 @@ class _SignInState extends State<SignIn> {
                             },
                             child: Container(
                               height: 50,
-                              width: 100,
+                              width: 7000,
                               decoration: BoxDecoration(
-                                  color: Colors.blueAccent[100],
-                                  borderRadius: BorderRadius.circular(20)
+                                  color:  Color(0xff900C0C),
+                                  borderRadius: BorderRadius.circular(5.0)
                               ),
                               child: Center(
+
                                 child: Text(
                                   'Sign Up',
-                                  style: TextStyle(color: Colors.black ,
+                                  style: TextStyle(color: Colors.white ,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 19),
                                 ),
@@ -169,29 +171,28 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                       ),
-                      Row(crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(child: Text('Have an account?'),),
-                          Expanded(
-                            child: RaisedButton(padding: EdgeInsets.symmetric(horizontal: 1.0),
-                              color: Colors.white,
-                              child: Text(
-                                'Sign In',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(color: Colors.red),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-
-                            ),
-                          ),
-                        ],
-                      ),],
+                      ],
                   ),
                 ),
-              )
-            ],
+              ),
+              Row(crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: RaisedButton(padding: EdgeInsets.symmetric(horizontal: 1.0),
+                      color:  Color(0xff900C0C),
+                      child: Text(
+                        'Have an account? Sign In',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+
+                    ),
+                  ),
+                ],
+              ),],
           ),
         ),
       ),
