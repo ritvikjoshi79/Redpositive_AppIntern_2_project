@@ -52,7 +52,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
           fontSize: 16.0,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(5.0),
         ),
         prefixIcon: hintText == "Enter email.." ? Icon(Icons.email) : Icon(Icons.lock),
         suffixIcon: hintText == "Password"
@@ -72,12 +72,17 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: Colors.redAccent,
+      backgroundColor:  Color(0xff900C0C),
+      appBar: AppBar( title: Text('RedPositive',
+        style: TextStyle(
+          color: Color(0xff900C0C),
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Spartan',
+        ),),
 
-      appBar: AppBar(
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.white70), // change the drawer burger color,
-        backgroundColor: Colors.redAccent,
+        iconTheme: IconThemeData(color:  Color(0xff900C0C) ), // change the drawer burger color,
+        backgroundColor: Colors.white,
       ),
       drawer: Burger(),
       body: Container(
@@ -87,18 +92,19 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
                 child: Text('Login Here',
                     textAlign: TextAlign.left, style: TextStyle(fontSize: 25.0 ,
-                        fontWeight: FontWeight.w500 , letterSpacing: 1)),
+                        fontWeight: FontWeight.w500 , letterSpacing: 1, color: Colors.white
+                    )),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     color: Colors.white,
                     boxShadow: [BoxShadow(
                       color:  Colors.black,
@@ -110,18 +116,21 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
                 child: Form( key: _formkey,
                   child: Column( crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('EMAIL',
+                      Text('Email',
                           textDirection: TextDirection.ltr,
                           textAlign: TextAlign.left,
-                          style: TextStyle(fontSize: 20.0)),
+                          style: TextStyle(fontSize: 20.0)),SizedBox( height : 10),
                       buildTextField("Enter email..", emailcon),
-                      Text('PASSWORD',
+                      SizedBox( height : 10),
+                      Text('Password',
                           textAlign: TextAlign.left,
                           style: TextStyle(fontSize: 20.0)),
+                      SizedBox( height : 10),
                       buildTextField("Enter password.." , pwdcon),
+                      SizedBox( height : 10),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                         padding : const EdgeInsets.all(3.0),
                           child: GestureDetector(
                             onTap: () async{
                              AuthResult res;
@@ -149,15 +158,15 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
                             },
                             child: Container(
                               height: 50,
-                              width: 100,
+                              width: 7000,
                               decoration: BoxDecoration(
-                                  color: Colors.blueAccent[100],
-                                  borderRadius: BorderRadius.circular(20)
+                                  color:  Color(0xff900C0C),
+                                  borderRadius: BorderRadius.circular(5.0)
                               ),
                               child: Center(
                                 child: Text(
                                   'Login',
-                                  style: TextStyle(color: Colors.black ,
+                                  style: TextStyle(color: Colors.white ,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 19),
                                 ),
@@ -166,46 +175,17 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
                           ),
                         ),
                       ),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              'New User?',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                          SizedBox(width: 10,),
-                          Expanded(
-                            child: RaisedButton(
-                              padding: EdgeInsets.symmetric(horizontal: 1.0),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                              ),
-                              child: Text(
-                                'Sign Up',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(color: Colors.green),
-                              ),
-                              onPressed: () {
-                                Navigator.push(context,MaterialPageRoute(builder: (context)=> SignIn()));
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+
                       Row( mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          RaisedButton(
+                          FlatButton(
                             padding: EdgeInsets.symmetric(horizontal: 10.0),
                             color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                            ),
+
                             child: Text(
-                              'Forgot Password?',
-                              style: TextStyle(color: Colors.red),
+                              'Forgot Password? Get help signing in.',
+                              style: TextStyle(color:  Color(0xff900C0C),),
+
                             ),
                             onPressed: () {},
                           ),
@@ -215,7 +195,30 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
                   ),
                 ),
               ),
-            ],
+              Padding(padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(width: 10,),
+                    Expanded(
+                      child: FlatButton(
+                        padding: EdgeInsets.symmetric(),
+                        color:  Color(0xff900C0C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(0.0)),
+                        ),
+                        child: Text(
+                          'Dont have an account? Sign Up',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=> SignIn()));
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ), ],
           ),
         ),
       ),
