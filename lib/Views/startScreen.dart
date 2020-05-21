@@ -4,6 +4,7 @@ import 'package:redpositive_app_1/Screens/webinar/create_join_screen.dart';
 import 'package:flutter/material.dart';
 import '../Service/service.dart';
 
+
 class StartScreen extends StatefulWidget {
   @override
   _StartScreenState createState() => _StartScreenState();
@@ -21,7 +22,7 @@ class _StartScreenState extends State<StartScreen> {
           "RedPositive",
           textScaleFactor: 0.9,
           style: TextStyle(
-            color: Colors.white,
+            color:  Color(0xff900C0C),
             fontWeight: FontWeight.bold,
             fontFamily: 'Spartan',
           ),
@@ -34,7 +35,7 @@ class _StartScreenState extends State<StartScreen> {
               textScaleFactor: 0.7,
               style: TextStyle(
                 fontFamily: 'Poppins',
-                color: Colors.white,
+                color:  Color(0xff900C0C),
               ),
             ),
           ),
@@ -45,23 +46,23 @@ class _StartScreenState extends State<StartScreen> {
               textScaleFactor: 0.7,
               style: TextStyle(
                 fontFamily: 'Poppins',
-                color: Colors.white,
+                color:  Color(0xff900C0C),
               ),
             ),
           ),
           FlatButton(
-            onPressed: () {},
+            onPressed: () { Navigator.pop(context);},
             child: Text(
               "Log Out",
               textScaleFactor: 0.7,
               style: TextStyle(
                 fontFamily: 'Poppins',
-                color: Colors.white,
+                color:  Color(0xff900C0C),
               ),
             ),
           ),
         ],
-        backgroundColor: Colors.red[700],
+        backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,
       body: Center(
@@ -83,7 +84,7 @@ class _StartScreenState extends State<StartScreen> {
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.65,
                           color: index == currentIndex
-                              ? Colors.red[900]
+                              ?  Color(0xff900C0C)
                               : Colors.white,
                           padding: EdgeInsets.only(left: 15, right: 15),
                           child: SingleChildScrollView(
@@ -125,14 +126,14 @@ class _StartScreenState extends State<StartScreen> {
                                     fontSize: 11,
                                     color: index == currentIndex
                                         ? Colors.white
-                                        : Colors.red[900],
+                                        :  Color(0xff900C0C),
                                     fontStyle: FontStyle.italic,
                                   ),
                                 ),
                                 Divider(
                                   color: index == currentIndex
                                       ? Colors.white.withOpacity(0.3)
-                                      : Colors.red[900].withOpacity(0.3),
+                                      :  Color(0xff900C0C),
                                   height: 20,
                                   thickness: 2,
                                 ),
@@ -168,7 +169,7 @@ class _StartScreenState extends State<StartScreen> {
                                     style: TextStyle(
                                       color: index == currentIndex
                                           ? Colors.white
-                                          : Colors.red[900],
+                                          :  Color(0xff900C0C),
                                       fontFamily: 'Poppins',
                                     ),
                                   ),
